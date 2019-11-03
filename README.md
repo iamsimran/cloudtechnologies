@@ -23,3 +23,6 @@ Following 3 queries are triggered to get the results:
 1. To find top 10 posts with scores  
 2. To find top 10 users with highest post scores  
 3. Number of users who used word 'hadoop' in their posts
+
+# Task 4:
+This task achieves the TFIDF part in which top 10 used terms used by each of the top 10 users is calculated. The base code is in python and it executes the code in mapreduce to achieve its target.
