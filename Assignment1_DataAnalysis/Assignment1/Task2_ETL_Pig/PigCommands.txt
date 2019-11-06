@@ -1,0 +1,12 @@
+f1 = load '/user/ETL/StackExData1.csv' using org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE', 'UNIX', 'SKIP_INPUT_HEADER') as (Id:int, PostTypeId:int, AcceptedAnswerId:int, ParentId:int, CreationDate:Datetime, DeletionDate:Datetime, Score:int, ViewCount:int, Body:chararray, OwnerUserId:int, OwnerDisplayName:chararray, LastEditorUserId:int, LastEditorDisplayName:chararray, LastEditDate:Datetime, LastActivityDate:Datetime, Title:chararray, Tags:chararray, AnswerCount:int, CommentCount:int, FavoriteCount:int, ClosedDate:Datetime, CommunityOwnedDate:Datetime);
+
+f2 = load '/user/ETL/StackExData2.csv' using org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE', 'UNIX', 'SKIP_INPUT_HEADER') as (Id:int, PostTypeId:int, AcceptedAnswerId:int, ParentId:int, CreationDate:Datetime, DeletionDate:Datetime, Score:int, ViewCount:int, Body:chararray, OwnerUserId:int, OwnerDisplayName:chararray, LastEditorUserId:int, LastEditorDisplayName:chararray, LastEditDate:Datetime, LastActivityDate:Datetime, Title:chararray, Tags:chararray, AnswerCount:int, CommentCount:int, FavoriteCount:int, ClosedDate:Datetime, CommunityOwnedDate:Datetime);
+
+f3 = load '/user/ETL/StackExData3.csv' using org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE', 'UNIX', 'SKIP_INPUT_HEADER') as (Id:int, PostTypeId:int, AcceptedAnswerId:int, ParentId:int, CreationDate:Datetime, DeletionDate:Datetime, Score:int, ViewCount:int, Body:chararray, OwnerUserId:int, OwnerDisplayName:chararray, LastEditorUserId:int, LastEditorDisplayName:chararray, LastEditDate:Datetime, LastActivityDate:Datetime, Title:chararray, Tags:chararray, AnswerCount:int, CommentCount:int, FavoriteCount:int, ClosedDate:Datetime, CommunityOwnedDate:Datetime);
+
+f4 = load '/user/ETL/StackExData4.csv' using org.apache.pig.piggybank.storage.CSVExcelStorage(',', 'YES_MULTILINE', 'UNIX', 'SKIP_INPUT_HEADER') as (Id:int, PostTypeId:int, AcceptedAnswerId:int, ParentId:int, CreationDate:Datetime, DeletionDate:Datetime, Score:int, ViewCount:int, Body:chararray, OwnerUserId:int, OwnerDisplayName:chararray, LastEditorUserId:int, LastEditorDisplayName:chararray, LastEditDate:Datetime, LastActivityDate:Datetime, Title:chararray, Tags:chararray, AnswerCount:int, CommentCount:int, FavoriteCount:int, ClosedDate:Datetime, CommunityOwnedDate:Datetime);
+
+allfiles = union f1, f2, f3, f4;
+extract = foreach allfiles generate Id, Score, ViewCount,OwnerUserId,OwnerDisplayName,Body;
+
+store extract into '/user/pig/StackExData' USING org.apache.parquet.pig.ParquetStorer;

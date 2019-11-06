@@ -1,0 +1,6 @@
+--Run following queries one by one in stackexchange query composer
+
+select * from posts where viewcount>96500;
+select * from posts where viewcount<96500 and viewcount>56750;
+select * from posts where viewcount<56799 and viewcount>40670;
+select * from posts where viewcount<40672 and viewcount>31700;
