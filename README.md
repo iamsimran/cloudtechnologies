@@ -26,3 +26,5 @@ Following 3 queries are triggered to get the results:
 
 # Task 4:
 This task achieves the TFIDF part in which top 10 used terms used by each of the top 10 users is calculated. The base code is in python and it executes the code in mapreduce to achieve its target.
+
+The entire TFIDF Python code was referred from this git https://github.com/devangpatel01/TF-IDF-implementation-using-map-reduce-Hadoop-python-
